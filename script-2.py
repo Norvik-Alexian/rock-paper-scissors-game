@@ -42,50 +42,51 @@ class Game:
             print(f'Computer chose => {computer_choice}')
 
             if i > 2:
-                if combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'rock')] > \
-                        combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'paper')]:
+                if combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'rock')] > \
+                        combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'paper')]:
                     self.prediction = 'rock'
                 else:
                     self.prediction = 'paper'
 
-                if combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'rock')] > \
-                        combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'scissors')]:
+                if combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'rock')] > \
+                        combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'scissors')]:
                     self.prediction = 'rock'
                 else:
                     self.prediction = 'scissors'
 
-                if combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'paper')] > \
-                        combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'rock')]:
+                if combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'paper')] > \
+                        combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'rock')]:
                     self.prediction = 'paper'
                 else:
                     self.prediction = 'rock'
 
-                if combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'paper')] > \
-                        combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'scissors')]:
+                if combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'paper')] > \
+                        combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'scissors')]:
                     self.prediction = 'paper'
                 else:
                     self.prediction = 'scissors'
 
-                if combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'scissors')] > \
-                        combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'rock')]:
+                if combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'scissors')] > \
+                        combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'rock')]:
                     self.prediction = 'scissors'
                 else:
                     self.prediction = 'rock'
 
-                if combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'scissors')] > \
-                        combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, 'paper')]:
+                if combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'scissors')] > \
+                        combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, 'paper')]:
                     self.prediction = 'scissors'
                 else:
                     self.prediction = 'paper'
             if computer_choice == user_choice:
                 self.correct_count += 1
-            combination_history[(prev_prev_prev_choice, prev_prev_choice, prev_choice, user_choice)] += 1
+            combination_history[(self.prev_prev_prev_choice, self.prev_prev_choice, self.prev_choice, user_choice)] += 1
 
-            prev_prev_prev_choice = prev_prev_choice
-            prev_prev_choice = prev_choice
-            prev_choice = user_choice
+            self.prev_prev_prev_choice = self.prev_prev_choice
+            self.prev_prev_choice = self.prev_choice
+            self.prev_choice = user_choice
 
-        print(f"Computer wins : {self.correct_count} times.")
+        print(f"Computer wins: {self.correct_count} times.")
+
 
 game = Game()
-game.collecting_history()
+game.guess_possiblity()
